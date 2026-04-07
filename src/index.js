@@ -3,6 +3,7 @@ var VOLUME_THRESHOLD = 30;
 
 var state = createInitialState(KID_COUNT, VOLUME_THRESHOLD);
 var currentVolume = 0;
+var lastTime = 0;
 
 function setup() {
   var canvas = document.getElementById('game-canvas');
@@ -20,9 +21,9 @@ function setup() {
 
   startButton.addEventListener('click', function() {
     startMicrophone(onVolumeChange).then(function() {
-      startButton.style.display = 'none';
-      instructions.style.display = 'none';
-      gameLoop(ctx);
+      document.getElementById('overlay').style.display = 'none';
+      lastTime = performance.now();
+      requestAnimationFrame(function(timestamp) { gameLoop(ctx, timestamp); });
     }).catch(function() {
       startButton.textContent = 'Mic access denied - tap to retry';
     });
@@ -33,10 +34,13 @@ function onVolumeChange(volume) {
   currentVolume = volume;
 }
 
-function gameLoop(ctx) {
-  state = tick(state, currentVolume);
+function gameLoop(ctx, timestamp) {
+  var deltaTime = Math.min((timestamp - lastTime) / 1000, 0.1);
+  lastTime = timestamp;
+
+  state = tick(state, currentVolume, deltaTime);
   render(ctx, state, currentVolume);
-  requestAnimationFrame(function() { gameLoop(ctx); });
+  requestAnimationFrame(function(ts) { gameLoop(ctx, ts); });
 }
 
 function resizeCanvas(canvas) {
