@@ -1,0 +1,16 @@
+{
+  "name": "yelling-mommy",
+  "version": "0.1.0",
+  "description": "A stress-relief game for mommy",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": ["game", "stress-relief"],
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
