@@ -1,0 +1,10 @@
+{
+  "name": "Yelling Mommy",
+  "short_name": "YellMom",
+  "description": "Yell to make the naughty kids kneel!",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF8E7",
+  "theme_color": "#FF6B6B"
+}

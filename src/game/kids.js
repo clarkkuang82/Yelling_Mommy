@@ -16,4 +16,4 @@ function updateKids(kids, volumeLevel, threshold) {
   }));
 }
 
-module.exports = { createKids, updateKids };
+if (typeof module !== 'undefined') module.exports = { createKids, updateKids };

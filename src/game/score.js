@@ -9,4 +9,4 @@ function calculateBonus(streak) {
   return 0;
 }
 
-module.exports = { calculateScore, calculateBonus };
+if (typeof module !== 'undefined') module.exports = { calculateScore, calculateBonus };

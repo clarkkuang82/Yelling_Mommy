@@ -18,4 +18,4 @@ function calculateVolume(frequencyData) {
   return Math.min(MAX_VOLUME, Math.max(0, volume));
 }
 
-module.exports = { calculateVolume };
+if (typeof module !== 'undefined') module.exports = { calculateVolume };

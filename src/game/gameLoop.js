@@ -1,5 +1,7 @@
-const { createKids, updateKids } = require('./kids');
-const { calculateScore, calculateBonus } = require('./score');
+if (typeof require !== 'undefined') {
+  var { createKids, updateKids } = require('./kids');
+  var { calculateScore, calculateBonus } = require('./score');
+}
 
 function createInitialState(kidCount, threshold) {
   return {
@@ -26,4 +28,4 @@ function tick(state, volumeLevel) {
   };
 }
 
-module.exports = { createInitialState, tick };
+if (typeof module !== 'undefined') module.exports = { createInitialState, tick };
