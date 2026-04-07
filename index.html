@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#FFF8E7">
+  <title>Yelling Mommy</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      overflow: hidden;
+      background: #FFF8E7;
+      font-family: Arial, sans-serif;
+      touch-action: none;
+    }
+    #game-canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+    #start-button {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px 40px;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      background: #FF6B6B;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+    #start-button:active {
+      transform: translate(-50%, -50%) scale(0.95);
+      background: #E55555;
+    }
+    .instructions {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, calc(-50% + 50px));
+      color: #666;
+      font-size: 16px;
+      text-align: center;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="game-canvas"></canvas>
+  <button id="start-button">START</button>
+  <p class="instructions">Yell to make the kids kneel!</p>
+
+  <script src="src/audio/volumeAnalyser.js"></script>
+  <script src="src/audio/microphoneSource.js"></script>
+  <script src="src/game/score.js"></script>
+  <script src="src/game/kids.js"></script>
+  <script src="src/game/gameLoop.js"></script>
+  <script src="src/ui/renderer.js"></script>
+  <script src="src/index.js"></script>
+</body>
+</html>
