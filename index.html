@@ -5,62 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#FFF8E7">
+  <meta name="theme-color" content="#FF6B6B">
   <title>Yelling Mommy</title>
   <link rel="manifest" href="manifest.json">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       overflow: hidden;
-      background: #FFF8E7;
-      font-family: Arial, sans-serif;
+      background: #2C1810;
+      font-family: 'Segoe UI', Arial, sans-serif;
       touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
     #game-canvas {
       display: block;
       width: 100vw;
       height: 100vh;
     }
-    #start-button {
+    .overlay {
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 20px 40px;
-      font-size: 24px;
-      font-weight: bold;
-      color: white;
-      background: #FF6B6B;
-      border: none;
-      border-radius: 16px;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(44, 24, 16, 0.85);
       z-index: 10;
+    }
+    .title {
+      font-size: 42px;
+      font-weight: 900;
+      color: #FF6B6B;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+    .subtitle {
+      font-size: 16px;
+      color: #FFD699;
+      margin-bottom: 40px;
+      opacity: 0.8;
+    }
+    #start-button {
+      padding: 18px 50px;
+      font-size: 22px;
+      font-weight: 800;
+      color: white;
+      background: linear-gradient(135deg, #FF6B6B, #E05555);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+      transition: transform 0.1s;
+      letter-spacing: 2px;
     }
     #start-button:active {
-      transform: translate(-50%, -50%) scale(0.95);
-      background: #E55555;
+      transform: scale(0.95);
     }
     .instructions {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, calc(-50% + 50px));
-      color: #666;
-      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      font-size: 14px;
+      margin-top: 24px;
       text-align: center;
-      z-index: 10;
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
   <canvas id="game-canvas"></canvas>
-  <button id="start-button">START</button>
-  <p class="instructions">Yell to make the kids kneel!</p>
+  <div class="overlay" id="overlay">
+    <div class="title">YELLING MOMMY</div>
+    <div class="subtitle">A stress-relief game for moms</div>
+    <button id="start-button">START YELLING</button>
+    <p class="instructions">
+      Yell into your microphone to make<br>
+      the naughty kids kneel down!<br>
+      <span style="font-size:12px; opacity:0.6; margin-top:8px; display:block;">
+        Requires microphone access
+      </span>
+    </p>
+  </div>
 
   <script src="src/audio/volumeAnalyser.js"></script>
   <script src="src/audio/microphoneSource.js"></script>
